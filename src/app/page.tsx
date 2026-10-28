@@ -13,7 +13,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const targetApp = searchParams.get("app") || undefined;
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
 
@@ -37,7 +37,7 @@ function LoginForm() {
       />
 
       <Image src={"/ctrlbys.svg"} alt="logo" width={75} height={75} />
-      <h1 className={styles.text}>Bienvenido a CtrlBys</h1>
+      <h1 className={styles.text}>Bienvenido a CtrlByz</h1>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         {error && <p style={{ color: "red", fontSize: "1.2rem" }}>{error}</p>}
