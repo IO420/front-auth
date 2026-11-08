@@ -28,7 +28,7 @@ function LoginForm() {
   return (
     <section className={styles.loginCard}>
       <Image
-        src={"/ctrlbys.svg"}
+        src={"/ctrlbyz.svg"}
         alt="background logo"
         width={300}
         height={300}
@@ -36,7 +36,7 @@ function LoginForm() {
         priority
       />
 
-      <Image src={"/ctrlbys.svg"} alt="logo" width={75} height={75} />
+      <Image src={"/ctrlbyz.svg"} alt="logo" width={75} height={75} />
       <h1 className={styles.text}>Bienvenido a CtrlByz</h1>
 
       <form className={styles.form} onSubmit={handleSubmit}>
