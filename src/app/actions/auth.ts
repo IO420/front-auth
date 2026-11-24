@@ -44,21 +44,25 @@ export async function loginAction(formData: FormData, targetApp?: string) {
       password,
     });
 
-    const { token } = response.data;
+    const { token, user } = response.data;
 
     if (!token) {
       return { error: "No se recibió un token válido del servidor" };
     }
 
     const cookieStore = await cookies();
-    cookieStore.set("authToken", token, {
+
+    const cookieOptions = {
       httpOnly: true,
       secure: isProduction,
-      sameSite: "lax",
+      sameSite: "lax" as const,
       ...(isProduction && { domain: envConfig.domain }),
       path: "/",
       maxAge: 60 * 60 * 24 * 7,
-    });
+    };
+
+    cookieStore.set("authToken", token, cookieOptions);
+    cookieStore.set("userName", user.userName, cookieOptions);
   } catch (error: any) {
     const errorMessage =
       error.response?.data?.message || "Credenciales incorrectas";
